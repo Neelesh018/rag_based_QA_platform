@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Gemini PDF RAG</title>
+  <style>
+    body {
+      font-family: Arial;
+      background: #f6f8fb;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px;
+    }
+    .container {
+      background: white;
+      padding: 20px 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      width: 500px;
+      max-width: 90%;
+    }
+    input, button {
+      width: 100%;
+      margin: 10px 0;
+      padding: 10px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+    button {
+      background-color: #007bff;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+    .response {
+      background: #eef6ff;
+      border-left: 4px solid #007bff;
+      padding: 10px;
+      margin-top: 15px;
+      white-space: pre-wrap;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>📘 Gemini PDF QA</h2>
+    <h3>Step 1: Upload PDFs (up to 20)</h3>
+    <input type="file" id="pdfs" multiple accept="application/pdf" />
+    <button onclick="uploadPDFs()">Upload</button>
+
+    <h3>Step 2: Ask a Question</h3>
+    <input type="text" id="question" placeholder="Ask something..." />
+    <button onclick="askQuestion()">Ask</button>
+
+    <div id="response" class="response"></div>
+  </div>
+
+  <script>
+    async function uploadPDFs() {
+      const files = document.getElementById('pdfs').files;
+      if (files.length === 0) {
+        alert("Select at least one PDF!");
+        return;
+      }
+      const formData = new FormData();
+      for (let file of files) formData.append("files", file);
+      document.getElementById("response").textContent = "⏳ Uploading...";
+      const res = await fetch("/process_pdfs", { method: "POST", body: formData });
+      const text = await res.text();
+      document.getElementById("response").textContent = text;
+    }
+
+    async function askQuestion() {
+      const q = document.getElementById('question').value;
+      if (!q) return alert("Enter a question!");
+      const formData = new FormData();
+      formData.append("question", q);
+      document.getElementById("response").textContent = "⏳ Thinking...";
+      const res = await fetch("/query", { method: "POST", body: formData });
+      const data = await res.json();
+      document.getElementById("response").textContent = data.answer || data.error || "No response.";
+    }
+  </script>
+</body>
+</html>

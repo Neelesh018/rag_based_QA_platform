@@ -1,0 +1,10 @@
+services:
+  rag-app:
+    build: .
+    container_name: rag_app
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/app
+    env_file:
+      - .env

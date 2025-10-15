@@ -1,0 +1,24 @@
+Explainable AI (Schwalbe and Finzel (2023)), also referred to as interpretable or transparent AI,
+concentrates on developing AI techniques that can explain the reasons behind their decisions in a way
+easily understandable to humans. This is in contrast to so-called black-box AI techniques, most notable
+artificial neural-networks (ANNs), that give answers without providing much insights into how a
+particular decision was reached. A related problem is when an AI system provides a detailed trace of
+its internal sub-decisions as an explanation to the human, but from a practical standpoint the amount of
+information is simply too excessive for the human to process and analyze, thus effectively rendering
+the explanation useless. This problem is typically referred to as information overload, information
+explosion or, more informally, infobesity.
+Saliency maps (Kadir and Brady (2001)) visually represent how much a given input affects a model’s
+output. They are commonly used in image classification to visualize relevant aspects of a given input
+image to a given classification, for example, highlighting areas of interest (Simonyan et al. (2014)).
+The Local Interpretable Model-Agnostic Explanations (LIME) is a well-known framework for model
+interpretation (Ribeiro et al. (2016)). It interprets individual model predictions based on approximating the model around a given prediction using a local linear explanation model. More recently, SHAP
+(SHapley Additive exPlanations) was proposed as a unified framework for interpreting predictions,
+unifying several existing methods (including LIME) as well as presenting new ones (Lundberg and
+Lee (2017)).
+One drawback of the methods mentioned above is that they mainly work on detecting the sensitivity of
+the network’s predictions to the individual input parameters. In the case of DNNs, the input parameters are typically low-level features that are not necessarily meaningful for human-based interpretation
+(e.g., a single pixel in an image). Recently, concept-based explanation methods have shown promise,
+but they go beyond per-sample input features to explain higher-level human-friendly concepts across
+entire datasets. Testing with Concept Activation Vectors (TCAV) (Kim et al. (2018)) allows one to
+quantify how vital arbitrary user-defined (binary and non-binary) concepts are to neural-network predictions via model-probing (Alain and Bengio (2018)). The Automatic Concept-Based Explanations
+(ACE) method (Ghorbani et al. (2019)) further extends this line of concept-based explanations (in image recognition) by automatically discovering concepts, as opposed to them being human-provided.
