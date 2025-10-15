@@ -53,5 +53,4 @@ response = openai.ChatCompletion.create(
 model="gpt-4o-mini",
 messages=[{"role": "user", "content": prompt}]
 )
-9. https://dev.to/scottydocs/how-to-write-a-kickass-readme-5af9ontent": prompt}]
-)
+
