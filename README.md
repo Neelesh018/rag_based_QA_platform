@@ -28,6 +28,7 @@ Start the container:
 docker compose up --build
 Stop the container:
 docker compose down
+
 ---
 ## API Endpoints Overview
 | Endpoint | HTTP Method | Description |
