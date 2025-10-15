@@ -19,7 +19,6 @@ source venv/bin/activate # On Windows use: venv\Scripts\activate
 pip install -r requirements.txt
 ### Configure environment variables
 Add your API keys to the environment:
-generate the readme file again
 GOOGLE_API_KEY=your_gemini_api_key
 OPENAI_API_KEY=your_openai_key
 ### Run the FastAPI server locally
