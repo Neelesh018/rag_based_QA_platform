@@ -37,8 +37,8 @@ docker compose down
 | `/metadata` | GET | Get metadata on processed documents |
 ---
 ## Running Tests
-Run tests using:
-pytest -v
+Run tests using: pytest -v
+
 ---
 ## Configuring LLM Providers
 ### Using Google Gemini
