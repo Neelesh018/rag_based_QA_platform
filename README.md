@@ -6,12 +6,9 @@
 git clone https://github.com/<Neelesh018>/rag-based-QA-platform.git
 
 cd rag-based-QA-platform
-
-
-
 ### ----------- Create Virtual Environment -----------
-### python -m venv venv
-### source venv/bin/activate 
+###** python -m venv venv
+###** source venv/bin/activate 
 ----------- Install Dependencies -----------
 pip install -r requirements.txt
 ----------- Environment Variables -----------
